@@ -1,0 +1,157 @@
+{
+  "version": "1.1",
+  "name": "Laravel API Role",
+  "desc": "Complete API testing collection for Laravel Role-Based API",
+  "dateExported": "2025-11-29",
+  "colName": "Laravel API Role",
+  "folders": [
+    {
+      "name": "Public",
+      "requests": [
+        {
+          "name": "Register",
+          "description": "Register new user",
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/api/register",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "name": "New User",
+            "email": "newuser@example.com",
+            "password": "password",
+            "password_confirmation": "password"
+          }
+        },
+        {
+          "name": "Login",
+          "description": "Login and get access token",
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/api/login",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "email": "admin@example.com",
+            "password": "password"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Protected - User",
+      "requests": [
+        {
+          "name": "Get Me (Current User)",
+          "description": "Get current authenticated user info",
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/api/me",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        },
+        {
+          "name": "Logout",
+          "description": "Logout (revoke token)",
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/api/logout",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        },
+        {
+          "name": "Get My Todos",
+          "description": "List all todos belonging to current user",
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/api/todos",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        },
+        {
+          "name": "Create Todo",
+          "description": "Create new todo",
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/api/todos",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "title": "Buy groceries",
+            "description": "Milk, eggs, bread",
+            "completed": false
+          }
+        },
+        {
+          "name": "Get Todo (Own)",
+          "description": "Get specific todo (must own it)",
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/api/todos/1",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        },
+        {
+          "name": "Update Todo (Own)",
+          "description": "Update own todo",
+          "method": "PUT",
+          "url": "http://127.0.0.1:8000/api/todos/1",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "title": "Buy groceries",
+            "description": "Milk, eggs, bread, cheese",
+            "completed": false
+          }
+        },
+        {
+          "name": "Delete Todo (Own)",
+          "description": "Delete own todo",
+          "method": "DELETE",
+          "url": "http://127.0.0.1:8000/api/todos/1",
+          "headers": {
+            "Authorization": "Bearer YOUR_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Only",
+      "requests": [
+        {
+          "name": "List All Users",
+          "description": "Admin: Get all users in system",
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/api/admin/users",
+          "headers": {
+            "Authorization": "Bearer YOUR_ADMIN_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        },
+        {
+          "name": "List All Todos",
+          "description": "Admin: Get all todos with user relation",
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/api/admin/todos",
+          "headers": {
+            "Authorization": "Bearer YOUR_ADMIN_TOKEN_HERE",
+            "Accept": "application/json"
+          }
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "base_url": "http://127.0.0.1:8000",
+    "admin_token": "paste_admin_token_here",
+    "user_token": "paste_user_token_here"
+  }
+}
